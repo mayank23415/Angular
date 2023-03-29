@@ -1,27 +1,14 @@
 # DataBinding
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
+Data Binding is used to connect the flow of data btw component and view templates.
+There are two types of Data Bindin - 
+## 1. One Way Data Binding - 
+The flow of data in this type of binding is in one direction.
+## 2. Two Way Data Binding - 
+The flow of data in this type of binding is from both side component and view templates.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Types of One Way Data Binding - 
+The One Way Data Binding is further divided into three types : 
+### 1. Event Binding
+### 2. String Interpolation
+### 3. Property Binding

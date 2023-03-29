@@ -1,12 +1,7 @@
 <div class="container">
   <!--This button is using event biding where the event is wrapped
   with paranthesis.-->
-  <button (click)="show()">Show Data</button>
-  <!--we can use component 
-  properties and methods inside
-  this interpolated string-->
-  <h1 [hidden]="flag">{{ value }}</h1>
-  <!-- The image below is presented
-  using property binding. -->
-  <img [src]="source" [hidden]="flag">
+  <app-string-interpolation></app-string-interpolation><br>
+  <app-property-binding></app-property-binding><br>
+  <app-event-binding></app-event-binding>
 </div>
