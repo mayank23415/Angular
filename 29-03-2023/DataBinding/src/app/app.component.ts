@@ -7,7 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DataBinding';
+  flag : boolean = true;
 
   value : String = "This heading is printed string interpolation";
   source : String = "../assets/wallpaperflare.com_wallpaper.jpg";
+
+  
+  show() {
+    this.flag = false;
+  }
 }
