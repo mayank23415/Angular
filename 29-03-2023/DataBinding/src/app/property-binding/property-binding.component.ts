@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./property-binding.component.css']
 })
 export class PropertyBindingComponent {
-  source : String = "../assets/wallpaperflare-cropped.jpg";
+  source : String = "../assets/wallpaperflare.com_wallpaper.jpg";
   flag : boolean = true;
   displayImage() {
     this.flag = false;

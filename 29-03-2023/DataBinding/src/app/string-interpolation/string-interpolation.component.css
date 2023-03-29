@@ -1,4 +1,7 @@
 .SIDataBinding{
-    border: 1px solid black;
     padding : 5%;
+}
+
+.container-stringItrp{
+    border : 1px solid black;
 }
