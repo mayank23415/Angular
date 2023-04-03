@@ -1,0 +1,21 @@
+.navBar{
+    background-color: #ddd;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: black;
+}
+
+.navLinks{
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+}
+
+.navItem{
+    list-style: none;
+    padding: 10px;
+    background-color: #ddd;
+    width: 1fr;
+    font-size: large;
+}
+
