@@ -1,0 +1,17 @@
+<mat-form-field appearance="fill">
+    <mat-label>Source</mat-label>
+    <mat-select name="source">
+        <mat-option *ngFor="let source of source">
+            {{source.viewValue}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>Destination</mat-label>
+    <mat-select name="destination">
+        <mat-option *ngFor="let destination of destination">
+            {{destination.viewValue}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
