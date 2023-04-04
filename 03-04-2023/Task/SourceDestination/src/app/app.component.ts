@@ -1,3 +1,4 @@
+import { BooleanInput } from '@angular/cdk/coercion';
 import { Component } from '@angular/core';
 
 interface source {
@@ -26,8 +27,8 @@ export class AppComponent {
   selectedDestination: string = "";
   source: source[];
   destination: destination[];
-  routes: String[];
-  route: String='';
+  routes: String[] =[];
+  route: String = '';
 
 
   constructor() {
@@ -45,13 +46,11 @@ export class AppComponent {
       { value: 'hyderabad', viewValue: 'Hyderabad', flag: false, blocked: ['hyderabad'] },
       { value: 'banglore', viewValue: 'Banglore', flag: false, blocked: ['banglore'] }
     ]
-    this.routes=[];
   }
 
 
   //disableDest : Implemented to disable visited destination.
   disableDest() {
-    console.log("disableDest is called")
     let i = this.source.findIndex(city => city.value == this.selectedSource);
     let blocked = this.source[i].blocked;
 
@@ -75,9 +74,7 @@ export class AppComponent {
 
   //disableSource: Implemented to disable sources
   disableSource() {
-    console.log("disableSource is called")
     let i = this.destination.findIndex(city => city.value == this.selectedDestination);
-    console.log(i);
     let blocked = this.destination[i].blocked;
 
 
@@ -98,11 +95,11 @@ export class AppComponent {
 
   }
 
-  submit() {
-    let srcIndex = this.source.findIndex(city=>city.value == this.selectedSource);
+  submit(){
+    let srcIndex = this.source.findIndex(city => city.value == this.selectedSource);
     this.source[srcIndex].blocked.push(this.selectedDestination);
 
-    let desIndex = this.destination.findIndex(city=>city.value == this.selectedDestination);
+    let desIndex = this.destination.findIndex(city => city.value == this.selectedDestination);
     this.destination[desIndex].blocked.push(this.selectedSource);
 
     for (let i = 0; i < this.source.length; i++) {
@@ -112,14 +109,14 @@ export class AppComponent {
     for (let i = 0; i < this.destination.length; i++) {
       this.source[i].flag = false;
     }
-    
-    this.route  ="Source : "+this.selectedSource+" Destination : "+ this.selectedDestination;
+
+    this.route = "Source : " + this.selectedSource.toUpperCase() + " Destination : " + this.selectedDestination.toUpperCase();
     this.routes.push(this.route);
-    
+
     this.selectedDestination = "";
     this.selectedSource = "";
-
-    
-    console.log(this.routes);
+    console.log(this.source);
+    console.log(this.destination);
   }
+
 }
