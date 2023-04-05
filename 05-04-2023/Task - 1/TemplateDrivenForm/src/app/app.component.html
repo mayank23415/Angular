@@ -1,14 +1,37 @@
-<section>
+<section class="form-container">
   <h1>Template Driven Form Example</h1>
 
   <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
     <p>
-      <label>Username</label>
-      <input type="text" name="username" ngModel>
+      <label>First Name : </label>
+      <input type="text" name="firstName" ngModel placeholder="First Name">
     </p>
     <p>
-      <label>Password</label>
-      <input type="text" name="password" ngModel>
+      <label>Last Name : </label>
+      <input type="text" name="lastName" ngModel placeholder="Last Name">
+    </p>
+    <p>
+      <label>Email : </label>
+      <input type="text" name="email" ngModel placeholder="Email">
+    </p>
+    <p>
+      <label for="country">Country : </label>
+      <select id="country" name="country" ngModel>
+        <option disabled selected>Country</option>
+        <option value="USA">USA</option>
+        <option value="India">India</option>
+        <option value="Japan">Japan</option>
+        <option value="Germany">Germany</option>
+      </select>
+    </p>
+    <p>
+      <label>Gender : </label>
+      <label for="male">Male</label>
+      <input type="radio" id="male" name="gender" value="male" ngModel>
+      <label for="female">Female</label>
+      <input type="radio" id="female" name="gender" value="female" ngModel>
+      <label for="other">Other</label>
+      <input type="radio" id="other" name="gender" value="other" ngModel>
     </p>
     <p>
       <button type="submit">Submit</button>
