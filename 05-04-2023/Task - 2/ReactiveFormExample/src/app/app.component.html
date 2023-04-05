@@ -37,8 +37,9 @@
       <input type="radio" formControlName="gender" value="other" id="other">
     </p>
     <div formArratName="skills">
-      <ng-container *ngFor="let skill of reactiveForm.get('skills')['controls'];index as i">
+      <ng-container *ngFor="let skill of reactiveForm.get('skills')['controls'];let i=index">
         <input type="text" placeholder="add skill.." formControlName="{{i}}">
+        <button (click)="removeSkill(i)">delete skill</button>
       </ng-container>
     </div>
 

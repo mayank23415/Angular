@@ -30,4 +30,8 @@ export class AppComponent implements OnInit{
   addSkill() {
     (<FormArray>this.reactiveForm.get('skills')).push(new FormControl(null, Validators.required))
   }
+
+  removeSkill(i) {
+    (<FormArray>this.reactiveForm.get('skills')).removeAt(i);
+  }
 }
