@@ -36,8 +36,19 @@
       <label for="other">Others</label>
       <input type="radio" formControlName="gender" value="other" id="other">
     </p>
+    <div formArratName="skills">
+      <ng-container *ngFor="let skill of reactiveForm.get('skills')['controls'];index as i">
+        <input type="text" placeholder="add skill.." formControlName="{{i}}">
+      </ng-container>
+    </div>
+
+    <p>
+      <button (click)="addSkill()">Add Skill</button>
+    </p>
     <p>
       <button type="submit" [disabled]="!reactiveForm.valid">Submit</button>
     </p>
+
+    
   </form>
 </section>
