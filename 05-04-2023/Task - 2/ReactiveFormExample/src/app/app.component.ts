@@ -11,12 +11,12 @@ export class AppComponent implements OnInit{
   reactiveForm : FormGroup;
   ngOnInit(): void {
     this.reactiveForm = new FormGroup({
-      firstName : new FormControl(null, Validators.required),
-      lastName : new FormControl(null, Validators.required),
-      email: new FormControl(null, [Validators.required, Validators.email]),
+      firstName : new FormControl(null, [Validators.required, Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
+      lastName : new FormControl(null, [Validators.required, Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
+      email: new FormControl(null, [Validators.required, Validators.email, Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
       gender: new FormControl(null, Validators.required),
       country: new FormControl('India', Validators.required),
-      password : new FormControl(null, Validators.required),
+      password : new FormControl(null, [Validators.required, Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
       skills : new FormArray([
         new FormControl(null, Validators.required),
       ])
