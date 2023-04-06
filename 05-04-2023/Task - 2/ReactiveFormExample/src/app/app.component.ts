@@ -17,9 +17,7 @@ export class AppComponent implements OnInit{
       gender: new FormControl(null, Validators.required),
       country: new FormControl('India', Validators.required),
       password : new FormControl(null, Validators.required),
-      skills : new FormArray([
-        new FormControl(null, Validators.required),
-      ])
+      skills : new FormArray([])
     })
   }
 
