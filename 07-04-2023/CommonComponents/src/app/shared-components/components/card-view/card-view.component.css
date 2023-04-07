@@ -1,0 +1,26 @@
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 2%;
+}
+
+mat-card{
+    margin: 1%;
+    background: #ddd !important;
+    max-width: 500px;
+}
+
+mat-card-subtitle{
+    color: white;
+}
+
+mat-card-title{
+    color: white;
+}
+
+@media (max-width: 920px) {
+    .card-container {
+        flex: 1 21%;
+    }
+}
