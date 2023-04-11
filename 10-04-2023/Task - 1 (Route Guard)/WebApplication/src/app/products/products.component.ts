@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductServicesService } from '../services/product-services.service';
 
 interface product{
   name: String;
@@ -12,14 +13,12 @@ interface product{
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent {
-  products: product[];
-  constructor() {
-    this.products = [
-      {name:'Polarised Filter', price:'$99.99', img:'../../assets/wallpaperflare.com_wallpaper (1).jpg'},
-      {name:'Polarised Filter', price:'$99.99', img:'../../assets/wallpaperflare.com_wallpaper (1).jpg'},
-      {name:'Polarised Filter', price:'$99.99', img:'../../assets/wallpaperflare.com_wallpaper (1).jpg'},
-      {name:'Polarised Filter', price:'$99.99', img:'../../assets/wallpaperflare.com_wallpaper (1).jpg'},
-      {name:'Polarised Filter', price:'$99.99', img:'../../assets/wallpaperflare.com_wallpaper (1).jpg'}
-    ]
+  product: product[];
+  constructor(private products : ProductServicesService) {
+    console.log('Product Component Called');
+    // products.getAllProducts().then((data)=> {
+    //   this.product = data;
+    // })
+    this.product = products.products;
   }
 }

@@ -4,6 +4,7 @@ import { RouteGuardGuard } from './route-guard.guard';
 
 
 import { CanDeactivateGuard } from './register/can-deactivate.guard';
+import { CanLoadGuard } from './can-load.guard';
 
 const routes: Routes = [
   {
@@ -15,7 +16,8 @@ const routes: Routes = [
   {
     path: 'products',
     canActivate:[RouteGuardGuard],
-    loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+    loadChildren: () => import('./products/products.module').then(m => m.ProductsModule),
+    canLoad: [CanLoadGuard]
   },
   {
     path: '',
