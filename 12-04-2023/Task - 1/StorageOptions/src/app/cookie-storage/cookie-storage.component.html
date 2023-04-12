@@ -1,0 +1,20 @@
+<h2>Cookie Storage-</h2>
+<form>
+    <p>
+        <label for="firstName">First Name</label>
+        <input type="text" [(ngModel)]="firstName" id="firstName" name="firstName">
+    </p>
+    <p>
+        <label for="lastName">Last Name</label>
+        <input type="text" [(ngModel)]="lastName" id="lastName" name="lastName">
+    </p>
+    <p>
+        <label for="email">Email</label>
+        <input type="text" [(ngModel)]="email" id="email" name="email">
+    </p>
+    <p>
+        <button type="button" (click)="storeData()">Store</button>
+    </p>
+</form>
+
+<button type="button" (click)="clearData()">Clear</button>
