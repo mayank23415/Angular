@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { StudentService } from '../services/student.service';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Student } from '../services/student.model';
 import { Store } from '@ngrx/store';
-import { addStudent, getStudent, getStudentSuccess } from '../store/actions/student.action';
-import { state } from '@angular/animations';
-import { Observable } from 'rxjs';
+import { addStudent, getStudent} from '../store/actions/student.action';
 import { StudentState } from '../store/reducers/student.reducer';
 
 
@@ -27,35 +25,41 @@ export interface PeriodicElement {
 })
 
 export class StudentsComponent implements OnInit {
-  service;
   displayedColumns: String[] = ['_id','position', 'name', 'age', 'result'];
   dataSource: Student[] = [];
-  student$ = this.store.select('students')
-  constructor(private studentService: StudentService, private store: Store<StudentState>) {
-    this.service = studentService;
+  reactiveForm: FormGroup;
+  student$ = this.store.select('students');
+
+
+  constructor(private store: Store<StudentState>) {
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void{
+    this.reactiveForm = new FormGroup({
+      name: new FormControl(null, [Validators.required,this.checkSpace]),
+      position: new FormControl(null, [Validators.required, this.checkSpace]),
+      age: new FormControl(null, [Validators.required]),
+      _id: new FormControl(null, [Validators.required,this.checkSpace]),
+      result: new FormControl(null, [Validators.required])
+    })
     this.resetForm();
     this.refreshStudentList();
   }
 
-  resetForm(form?: NgForm) {
-    if (form) {
-      form.reset();
-    }
+  resetForm():void{
+    this.reactiveForm.reset()
 
-    this.service.selectedStudent = {
-      _id: "",
-      name: "",
-      position: "",
-      age: null,
-      result: null,
-    }
+    // this.service.selectedStudent = {
+    //   _id: "",
+    //   name: "",
+    //   position: "",
+    //   age: null,
+    //   result: null,
+    // }
   }
 
-  onSubmit(form? : NgForm) {
-      this.store.dispatch(addStudent(form.value));
+  onSubmit(form? : NgForm):void{
+      this.store.dispatch(addStudent(this.reactiveForm.value));
       this.refreshStudentList();
       // this.service.postStudent(form.value).subscribe((res)=> {
       //   this.resetForm(form);
@@ -64,7 +68,7 @@ export class StudentsComponent implements OnInit {
       // })
   }
 
-  refreshStudentList() {
+  refreshStudentList():void{
     console.log('refresh students called');
     
     this.store.dispatch(getStudent());
@@ -74,16 +78,23 @@ export class StudentsComponent implements OnInit {
     // })
   }
 
-  onEdit(std: Student) {
-    this.service.selectedStudent = std;
+  checkSpace(control : FormControl){
+    if(control.value != null && control.value.indexOf(' ') != -1) {
+      return {checkSpace : true};
+    }
+    return null;
   }
 
-  onDelete(form: NgForm) {
-    if(confirm('Do you want to delete this record') == true) {
-      this.service.deleteStudent(form.value._id).subscribe((res)=> {
-        this.refreshStudentList();
-        this.resetForm(form);
-      })
-    }
-  }
+  // onEdit(std: Student) {
+  //   this.service.selectedStudent = std;
+  // }
+
+  // onDelete(form: NgForm) {
+  //   if(confirm('Do you want to delete this record') == true) {
+  //     this.service.deleteStudent(form.value._id).subscribe((res)=> {
+  //       this.refreshStudentList();
+  //       this.resetForm(form);
+  //     })
+  //   }
+  // }
 }

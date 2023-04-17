@@ -9,7 +9,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudentService } from './services/student.service';
 import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
@@ -37,7 +37,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     MatTableModule,
     StoreModule.forRoot({students:studentReducer}),
     EffectsModule.forRoot([StudentEffects]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    ReactiveFormsModule
   ],
   providers: [StudentService],
   bootstrap: [AppComponent]
