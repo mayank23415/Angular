@@ -17,22 +17,35 @@ router.post('/', async (req, res) => {
         age: req.body.age,
         result: req.body.result
     }
-    console.log(data);
     await client.db('Student').collection('results').insertOne(data);
 })
 
 
 router.get('/', async (req, res) => {
     const data = await client.db('Student').collection('results').find().toArray();
-    console.log(data)
     res.send(data);
 })
 
 router.delete('/:id', async (req, res) => {
-    const str = JSON.parse(req.params);
-    await client.db('Student').collection('results').findOneAndDelete({
+    const str = JSON.parse(req.params.id);
+    await client.db('Student').collection('results').deleteOne({
         _id: str
     });
+})
+
+router.put('/:id', async (req, res) => {
+    const str = JSON.parse(req.params.id);
+
+    await client.db('Student').collection('results').updateOne({
+        _id: str
+    }, {
+        $set: {
+            name: req.body.name,
+            position: req.body.position,
+            age: req.body.age,
+            result: req.body.result
+        }
+    })
 })
 
 

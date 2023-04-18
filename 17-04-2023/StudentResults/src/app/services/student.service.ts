@@ -27,8 +27,8 @@ export class StudentService {
     return this.http.post(this.baseURL, std);
   }
 
-  putStudent(std: Student) {
-    return this.http.put(this.baseURL +`/${std._id}`, std);
+  putStudent(studentId:string,std: Student) {
+    return this.http.put(this.baseURL +`/${studentId}`, std);
   }
 
   deleteStudent(_id: String) {

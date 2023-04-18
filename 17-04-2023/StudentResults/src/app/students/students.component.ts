@@ -4,7 +4,7 @@ import { StudentService } from '../services/student.service';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Student } from '../services/student.model';
 import { Store } from '@ngrx/store';
-import { addStudent, getStudent} from '../store/actions/student.action';
+import { addStudent, deleteStudent, getStudent, updateStudent} from '../store/actions/student.action';
 import { StudentState } from '../store/reducers/student.reducer';
 
 
@@ -36,7 +36,7 @@ export class StudentsComponent implements OnInit {
 
   ngOnInit(): void{
     this.reactiveForm = new FormGroup({
-      name: new FormControl(null, [Validators.required,this.checkSpace]),
+      name: new FormControl(null, [Validators.required]),
       position: new FormControl(null, [Validators.required, this.checkSpace]),
       age: new FormControl(null, [Validators.required]),
       _id: new FormControl(null, [Validators.required,this.checkSpace]),
@@ -85,16 +85,25 @@ export class StudentsComponent implements OnInit {
     return null;
   }
 
-  // onEdit(std: Student) {
-  //   this.service.selectedStudent = std;
-  // }
+  editFormVisible : boolean = true;
+  toEdit() {
+    if(this.editFormVisible) {
+      this.editFormVisible = false;
+    }else {
+      this.editFormVisible = true;
+    }
+  }
+  onEdit() {
+    const id= JSON.stringify(this.reactiveForm.value._id);
+    this.store.dispatch(updateStudent(id, this.reactiveForm.value));
+    this.refreshStudentList();
+  }
 
-  // onDelete(form: NgForm) {
-  //   if(confirm('Do you want to delete this record') == true) {
-  //     this.service.deleteStudent(form.value._id).subscribe((res)=> {
-  //       this.refreshStudentList();
-  //       this.resetForm(form);
-  //     })
-  //   }
-  // }
+  _idDel: string;
+  onDelete() {
+    console.log(this._idDel);
+    const id = JSON.stringify(this._idDel);
+    this.store.dispatch(deleteStudent(id));
+    this.refreshStudentList();
+  }
 }
