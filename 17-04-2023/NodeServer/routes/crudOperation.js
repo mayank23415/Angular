@@ -40,7 +40,6 @@ router.put('/:id', async (req, res) => {
         _id: str
     }, {
         $set: {
-            name: req.body.name,
             position: req.body.position,
             age: req.body.age,
             result: req.body.result

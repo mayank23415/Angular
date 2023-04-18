@@ -59,15 +59,14 @@
 
     <br><button type="button" class="btn btn-outline-light" (click)="toEdit()">Edit Entry</button><br>
     <br><form #editForm [formGroup]='reactiveForm' (ngSubmit)="onEdit()" [hidden]="editFormVisible">
-      <input class="form-control" type="text" placeholder="Enter Name" name="name" formControlName="name"><br>
+
+      <input class="form-control" type="number" placeholder="Enter Result (out of 1000)" formControlName="result"><br>
 
       <input class="form-control" type="text" placeholder="Enter Position" formControlName="position"><br>
 
       <input class="form-control" type="number" placeholder="Enter Age" formControlName="age"><br>
 
       <input class="form-control" type="text" placeholder="Enter ID" formControlName="_id"><br>
-
-      <input class="form-control" type="number" placeholder="Enter Result (out of 1000)" formControlName="result"><br>
 
       <button type="submit" class="btn btn-outline-light">Submit</button><br>
     </form>
