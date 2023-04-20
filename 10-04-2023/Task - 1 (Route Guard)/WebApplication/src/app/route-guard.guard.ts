@@ -16,7 +16,6 @@ export class RouteGuardGuard {
     this.loggedIn = false;
   }
   
-
   canActivate(){
     return this.loggedIn;
   }

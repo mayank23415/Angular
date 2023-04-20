@@ -1,4 +1,4 @@
-import { createAction, props } from "@ngrx/store";
+import { createAction } from "@ngrx/store";
 import { Student } from "src/app/services/student.model";
 
 
