@@ -52,6 +52,7 @@ export class QuestionsComponent implements OnInit {
     if (this.index > -1) {
       this.index = this.index - 1;
       this.options = this.dataList[this.index].options as Option[];
+      console.log(this.previousCost);
       if(this.changedCost != this.previousCost) {
         this.finalCost += this.changedCost - this.previousCost;
       }
