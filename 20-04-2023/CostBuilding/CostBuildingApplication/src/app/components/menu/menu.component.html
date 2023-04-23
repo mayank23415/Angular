@@ -1,0 +1,12 @@
+<ng-container *ngFor="let data of dataList; let i=index">
+  
+    <div class="card d-inline-flex p-2 m-3 h-25 d-inline-block" style="width: 18rem;" >
+      <div class="card-body">
+        <h5 class="card-title">{{data.title}}</h5>
+        <p [hidden]="data.selected">Selected</p>
+      </div>
+      <a class="btn btn-primary" (click)="onSelect(i)">Select</a>
+    </div>
+</ng-container>
+
+
