@@ -69,4 +69,6 @@ export class QuestionsComponent implements OnInit {
     
     this.changedCost = this.options[i].cost;
   }
+
+  //Submition
 }
